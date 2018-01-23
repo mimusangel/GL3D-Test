@@ -29,7 +29,7 @@ Mesh::~Mesh()
 void			Mesh::add(unsigned int vboIndex, GLenum type, unsigned int width, void *data, unsigned int dataSize, GLenum usage)
 {
 	unsigned int s;
-	if (!_vao || vboIndex < 0 || vboIndex >= _nbVBO || !_vbo[vboIndex])
+	if (!_vao || vboIndex >= _nbVBO || !_vbo[vboIndex])
 		return ;
 	if (type == GL_FLOAT)
 		s = sizeof(GLfloat);

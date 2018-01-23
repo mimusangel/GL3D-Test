@@ -50,7 +50,7 @@ void		Shader::load(unsigned int shaderIndex, GLenum shaderType, const char *scri
 			return ;
 		char	*log = new char[log_length];
 		glGetShaderInfoLog(_shaders[shaderIndex], log_length, NULL, log);
-		std::cout << log << std::endl;
+		std::cout << log;
 		delete[] log;
 	}
 }
@@ -77,7 +77,7 @@ void		Shader::compile(void)
 		{
 			char	*log = new char[log_length];
 			glGetProgramInfoLog(_program, log_length, NULL, log);
-			std::cout << log << std::endl;
+			std::cout << log;
 			delete[] log;
 		}
 	}
@@ -99,6 +99,11 @@ void		Shader::bind(void)
 }
 
 void		Shader::unbind(void)
+{
+	Shader::Unbind();
+}
+
+void		Shader::Unbind(void)
 {
 	glUseProgram(0);
 }

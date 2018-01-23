@@ -11,10 +11,11 @@ private:
 public:
 	Shader(int size);
 	~Shader(void);
-	void		load(unsigned int shaderIndex, GLenum shaderType, const char *script);
-	void		compile(void);
-	void		bind(void);
-	void		unbind(void);
+	void			load(unsigned int shaderIndex, GLenum shaderType, const char *script);
+	void			compile(void);
+	void			bind(void);
+	void			unbind(void);
+	static void		Unbind(void);
 };
 
 #endif
