@@ -1,5 +1,9 @@
 NAME = ColorRunner
-SRC = main.cpp
+SRC = main.cpp\
+	Core.cpp\
+	Timer.cpp\
+	Mesh.cpp\
+	Shader.cpp
 
 ifeq ($(OS),Windows_NT)
 INCS = 
@@ -8,7 +12,7 @@ else
 INCS = -I ~/.brew/include
 LIBS = -lm -framework OPENGL \
 	`~/.brew/bin/pkg-config --static --libs glfw3` \
-	`~/.brew/bin/pkg-config --static --libs glew`
+	`~/.brew/bin/pkg-config --static --libs glew` 
 endif
 #------------------------------------------------------------------------------#
 
