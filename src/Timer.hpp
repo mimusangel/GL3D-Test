@@ -11,7 +11,7 @@ private:
 
 public:
 	static void					Update(void);
-	inline static double		getDelta(void) { return (_delta); }
+	inline static double		GetDelta(void) { return (_delta); }
 };
 
 #endif

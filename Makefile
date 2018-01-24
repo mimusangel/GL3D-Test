@@ -3,7 +3,8 @@ SRC = main.cpp\
 	Core.cpp\
 	Timer.cpp\
 	Mesh.cpp\
-	Shader.cpp
+	Shader.cpp\
+	Vec2f.cpp
 
 ifeq ($(OS),Windows_NT)
 INCS = 

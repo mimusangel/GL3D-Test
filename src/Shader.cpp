@@ -32,7 +32,7 @@ Shader::~Shader()
 		glDeleteProgram(_program);
 }
 
-void		Shader::load(unsigned int shaderIndex, GLenum shaderType, const char *script)
+void			Shader::load(unsigned int shaderIndex, GLenum shaderType, const char *script)
 {
 	if (shaderIndex >= _size)
 		return ;
@@ -63,7 +63,7 @@ void		Shader::load(unsigned int shaderIndex, GLenum shaderType, const char *scri
 	}
 }
 
-void		Shader::compile(void)
+void			Shader::compile(void)
 {
 	_program = glCreateProgram();
 	if (!_program)
@@ -101,17 +101,46 @@ void		Shader::compile(void)
 	}
 }
 
-void		Shader::bind(void)
+void			Shader::bind(void)
 {
 	glUseProgram(_program);
 }
 
-void		Shader::unbind(void)
+void			Shader::unbind(void)
 {
 	Shader::Unbind();
 }
 
-void		Shader::Unbind(void)
+void			Shader::Unbind(void)
 {
 	glUseProgram(0);
+}
+
+
+void			Shader::uniform1i(std::string const &name, int i)
+{
+	GLint id = glGetUniformLocation(_program, name.c_str());
+	glUniform1i(id, i);
+}
+
+void			Shader::uniform1f(std::string const &name, float x)
+{
+	GLint id = glGetUniformLocation(_program, name.c_str());
+	glUniform1f(id, x);
+}
+
+void			Shader::uniform2f(std::string const &name, float x, float y)
+{
+	GLint id = glGetUniformLocation(_program, name.c_str());
+	glUniform2f(id, x, y);
+}
+
+void			Shader::uniform2f(std::string const &name, float *data)
+{
+	uniform2f(name, data[0], data[1]);
+}
+
+void			Shader::uniform2f(std::string const &name, Vec2f const &vec)
+{
+	uniform2f(name, vec.getX(), vec.getY());
 }

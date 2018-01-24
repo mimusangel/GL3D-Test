@@ -2,6 +2,7 @@
 #define SHADER_HPP
 
 #include "global.hpp"
+#include "Vec2f.hpp"
 
 class Shader {
 private:
@@ -16,6 +17,11 @@ public:
 	void			bind(void);
 	void			unbind(void);
 	static void		Unbind(void);
+	void			uniform1i(std::string const &name, int i);
+	void			uniform1f(std::string const &name, float x);
+	void			uniform2f(std::string const &name, float x, float y);
+	void			uniform2f(std::string const &name, float *data);
+	void			uniform2f(std::string const &name, Vec2f const &vec);
 };
 
 #endif
