@@ -50,6 +50,14 @@ void		Shader::load(unsigned int shaderIndex, GLenum shaderType, const char *scri
 			return ;
 		char	*log = new char[log_length];
 		glGetShaderInfoLog(_shaders[shaderIndex], log_length, NULL, log);
+		if (shaderType == GL_VERTEX_SHADER)
+			std::cout << "Vertex Shader:" << std::endl;
+		else if (shaderType == GL_FRAGMENT_SHADER)
+			std::cout << "Fragment Shader:" << std::endl;
+		else if (shaderType == GL_GEOMETRY_SHADER)
+			std::cout << "Geometry Shader:" << std::endl;
+		else
+			std::cout << "Other Shader:" << std::endl;
 		std::cout << log;
 		delete[] log;
 	}
