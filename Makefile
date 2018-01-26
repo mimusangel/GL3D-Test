@@ -4,7 +4,8 @@ SRC = main.cpp\
 	Timer.cpp\
 	Mesh.cpp\
 	Shader.cpp\
-	Vec2f.cpp
+	Vec2f.cpp\
+	AWidget.cpp
 
 ifeq ($(OS),Windows_NT)
 INCS := -I.\win\include
