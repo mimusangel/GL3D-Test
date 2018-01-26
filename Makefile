@@ -5,7 +5,9 @@ SRC = main.cpp\
 	Mesh.cpp\
 	Shader.cpp\
 	Vec2f.cpp\
-	AWidget.cpp
+	AWidget.cpp\
+	Loader.cpp\
+	Renderer.cpp
 
 ifeq ($(OS),Windows_NT)
 INCS := -I.\win\include
