@@ -1,5 +1,7 @@
 #include "AWidget.hpp"
 
+AWidget		*AWidget::_Focus = NULL;
+
 AWidget::AWidget(AWidget *parent, Vec2f const &pos, Vec2f const &size) :
 	_parent(parent),
 	_pos(pos),
@@ -25,6 +27,7 @@ void 	AWidget::update(GLFWwindow *window)
 			mouseDrag(window, xpos, ypos, xpos - _pos.getX(), ypos - _pos.getY());
 			_dad = true;
 			_lClick = true;
+			_Focus = this;
 		}
 		else
 		{
@@ -44,6 +47,7 @@ void 	AWidget::update(GLFWwindow *window)
 		{
 			mouseDown(window, xpos, ypos, GLFW_MOUSE_BUTTON_RIGHT);
 			_rClick = true;
+			_Focus = this;
 		}
 		else
 		{
@@ -69,6 +73,12 @@ void 	AWidget::update(GLFWwindow *window)
 			mouseLeave(window, xpos, ypos);
 			_enter = false;
 		}
+	}
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) != GLFW_PRESS
+		&& glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) != GLFW_PRESS
+		&& _Focus == this)
+	{
+		_Focus = NULL;
 	}
 }
 

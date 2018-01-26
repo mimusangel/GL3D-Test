@@ -16,6 +16,8 @@ protected:
 	Vec2f		_pos;
 	Vec2f		_size;
 
+	static AWidget	*_Focus;
+
 public:
 	AWidget(AWidget *parent = NULL, Vec2f const &pos = Vec2f(), Vec2f const &size = Vec2f());
 	virtual void	load(void) = 0;
