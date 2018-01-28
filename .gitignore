@@ -33,4 +33,5 @@
 
 ColorRunner
 !.vscode
-win/
+win/lib
+win/include
