@@ -55,7 +55,8 @@
                 "C:/MinGW/include",
                 "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include",
                 "${workspaceRoot}",
-                "C:/programming/Color-Runner/win/include"
+                "C:/programming/Color-Runner/win/include",
+                "${workspaceRoot}/win/include"
             ],
             "defines": [
                 "_DEBUG",
