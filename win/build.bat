@@ -1,1 +1,1 @@
-g++.exe -o ColorRunner.exe src/*.cpp -I./win/include -L./win/lib/ -lglfw3 -lglew32 -lopengl32 -lglu32 -lgdi32 -lm -std=c++11
+g++.exe -o ColorRunner.exe src/Core/*.cpp src/Game/*.cpp -I./win/include -L./win/lib/ -lglfw3 -lglew32 -lopengl32 -lglu32 -lgdi32 -lm -std=c++11

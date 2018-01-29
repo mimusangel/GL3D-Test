@@ -1,7 +1,7 @@
 #ifndef LOADER_HPP
 #define LOADER_HPP
 
-#include "Shader.hpp"
+#include "../Core/Shader.hpp"
 
 class Loader {
 private:
@@ -12,7 +12,7 @@ private:
 public:
 	static Loader	&GetInstance(void);
 	inline Shader	*getShaderBase(void) { return (_base); }
-	void			unloader(void);
+	void			unload(void);
 	
 };
 

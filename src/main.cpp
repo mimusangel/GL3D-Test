@@ -1,5 +1,8 @@
-#include "global.hpp"
-#include "Core.hpp"
+#include "Core/global.hpp"
+#include "Core/Core.hpp"
+#include "Game/Renderer.hpp"
+#include "Game/Loader.hpp"
+#include "Game/SceneMain.hpp"
 
 static void win_resize_callback(GLFWwindow *window, int width, int height)
 {
@@ -37,7 +40,16 @@ int main(void)
             if (glewInit() != GLEW_OK)
                 std::cout << "Failed to initialize GLEW\n";
             else
+            {
+                Renderer renderer = Renderer::GetInstance();
+                Loader loader = Loader::GetInstance();
+                core.load();
+                core.loadScene(new SceneMain());
                 core.loop();
+                core.unload();
+                loader.unload();
+                renderer.unload();
+            }
         }
         glfwTerminate();
     }

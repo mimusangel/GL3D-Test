@@ -1,11 +1,16 @@
 #include "AWidget.hpp"
 
+bool		AWidget::_LClick = false;
+bool		AWidget::_RClick = false;
 AWidget		*AWidget::_Focus = NULL;
 
 AWidget::AWidget(AWidget *parent, Vec2f const &pos, Vec2f const &size) :
 	_parent(parent),
 	_pos(pos),
 	_size(size)
+{}
+
+AWidget::~AWidget(void)
 {}
 
 void 	AWidget::update(GLFWwindow *window)
@@ -26,16 +31,16 @@ void 	AWidget::update(GLFWwindow *window)
 			mouseDown(window, xpos, ypos, GLFW_MOUSE_BUTTON_LEFT);
 			mouseDrag(window, xpos, ypos, xpos - _pos.getX(), ypos - _pos.getY());
 			_dad = true;
-			_lClick = true;
+			_LClick = true;
 			_Focus = this;
 		}
 		else
 		{
 			mouseUp(window, xpos, ypos, GLFW_MOUSE_BUTTON_LEFT);
-			if (_lClick)
+			if (_LClick)
 			{
 				mouseClick(window, xpos, ypos, GLFW_MOUSE_BUTTON_LEFT);
-				_lClick = false;
+				_LClick = false;
 			}
 			if (_dad)
 			{
@@ -46,23 +51,23 @@ void 	AWidget::update(GLFWwindow *window)
 		if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
 		{
 			mouseDown(window, xpos, ypos, GLFW_MOUSE_BUTTON_RIGHT);
-			_rClick = true;
+			_RClick = true;
 			_Focus = this;
 		}
 		else
 		{
-			if (_rClick)
+			if (_RClick)
 			{
 				mouseClick(window, xpos, ypos, GLFW_MOUSE_BUTTON_RIGHT);
-				_rClick = false;
+				_RClick = false;
 			}
 			mouseUp(window, xpos, ypos, GLFW_MOUSE_BUTTON_RIGHT);
 		}
 	}
 	else
 	{
-		_lClick = false;
-		_rClick = false;
+		_LClick = false;
+		_RClick = false;
 		if (_dad)
 		{
 			mouseDrop(window, xpos, ypos, xpos - _pos.getX(), ypos - _pos.getY());

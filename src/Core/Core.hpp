@@ -2,6 +2,7 @@
 #define CORE_HPP
 
 #include "global.hpp"
+#include "AWidget.hpp"
 
 class Core {
 private:
@@ -10,6 +11,8 @@ private:
     int         _height;
     int         _ups;
     int         _fps;
+
+    AWidget     *_scene;
 
 public:
     Core(void);
@@ -22,6 +25,9 @@ public:
     
     void                    loop(void);
     void                    viewport(int width, int height);
+    void                    load(void);
+    void                    unload(void);
+    void                    loadScene(AWidget *scene);
 };
 
 #endif

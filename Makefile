@@ -1,13 +1,16 @@
 NAME = ColorRunner
 SRC = main.cpp\
-	Core.cpp\
-	Timer.cpp\
-	Mesh.cpp\
-	Shader.cpp\
-	Vec2f.cpp\
-	AWidget.cpp\
-	Loader.cpp\
-	Renderer.cpp
+	Core/Core.cpp\
+	Core/Timer.cpp\
+	Core/Mesh.cpp\
+	Core/Shader.cpp\
+	Core/Vec2f.cpp\
+	Core/AWidget.cpp\
+	\
+	Game/Loader.cpp\
+	Game/Renderer.cpp\
+	Game/SceneMain.cpp
+
 
 ifeq ($(OS),Windows_NT)
 INCS := -I.\win\include

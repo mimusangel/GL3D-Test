@@ -120,19 +120,28 @@ void			Shader::Unbind(void)
 void			Shader::uniform1i(std::string const &name, int i)
 {
 	GLint id = glGetUniformLocation(_program, name.c_str());
-	glUniform1i(id, i);
+	// if (id >= 0)
+		glUniform1i(id, i);
+	// else
+	// 	std::cout << "Error Shader: uniform1i not found. " << name << std::endl;
 }
 
 void			Shader::uniform1f(std::string const &name, float x)
 {
 	GLint id = glGetUniformLocation(_program, name.c_str());
-	glUniform1f(id, x);
+	// if (id >= 0)
+		glUniform1f(id, x);
+	// else
+	// 	std::cout << "Error Shader: uniform1f not found. " << name << std::endl;
 }
 
 void			Shader::uniform2f(std::string const &name, float x, float y)
 {
 	GLint id = glGetUniformLocation(_program, name.c_str());
-	glUniform2f(id, x, y);
+	// if (id >= 0)
+		glUniform2f(id, x, y);
+	// else
+	// 	std::cout << "Error Shader: uniform2f not found. " << name << std::endl;
 }
 
 void			Shader::uniform2f(std::string const &name, float *data)
