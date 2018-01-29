@@ -19,7 +19,7 @@ void	Button::unload(void)
 void	Button::render(void)
 {
 	_shader->bind();
-	_shader->uniform2f("btnPos", _pos);
+	_shader->uniform2f("btnPos", getPosition());
 	_shader->uniform2f("btnSize", _size);
 	if (isMouseOver())
 		_shader->uniform4f("btnColor", 1.0, 1.0, 0.5, 1.0);

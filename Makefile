@@ -8,7 +8,6 @@ SRC = main.cpp\
 	Core/AWidget.cpp\
 	Core/Button.cpp\
 	\
-	Game/Loader.cpp\
 	Game/Renderer.cpp\
 	Game/SceneMain.cpp\
 	Game/SceneGame.cpp\

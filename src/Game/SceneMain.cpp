@@ -1,5 +1,4 @@
 #include "SceneMain.hpp"
-#include "Loader.hpp"
 #include "Renderer.hpp"
 #include "../Core/Button.hpp"
 #include "../Core/Core.hpp"

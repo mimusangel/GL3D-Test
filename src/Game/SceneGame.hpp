@@ -9,7 +9,7 @@
 class SceneGame: public virtual AWidget {
 protected:
 	SceneGameMenu		*_menu;
-	bool				pause;
+	bool				_pause;
 
 public:
 	SceneGame(void);
@@ -20,6 +20,8 @@ public:
 	void 	update(GLFWwindow *window);
 	void	render(void);
 	void    keyRelease(GLFWwindow *window, int key);
+	inline bool isPause(void) { return (_pause); }
+	inline void setPause(bool pause) { _pause = pause; }
 };
 
 #endif
