@@ -14,6 +14,21 @@ static void win_resize_callback(GLFWwindow *window, int width, int height)
     core->viewport(width, height);
 }
 
+static void win_key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    Core	*core;
+
+	core = (Core *)glfwGetWindowUserPointer(window);
+	if (!core)
+		return ;
+    if (action == GLFW_PRESS)
+        core->keyPress(key);
+    else if (action == GLFW_REPEAT)
+        core->keyRepeat(key);
+    else if (action == GLFW_RELEASE)
+        core->keyRelease(key);
+}
+
 int main(void)
 {
     if (!glfwInit())
@@ -33,8 +48,8 @@ int main(void)
         {
             glfwMakeContextCurrent(core.getWindow());
             glfwSetWindowUserPointer(core.getWindow(), &core);
-            //glfwSetKeyCallback(game.window, key_callback);
             glfwSetFramebufferSizeCallback(core.getWindow(), win_resize_callback);
+            glfwSetKeyCallback(core.getWindow(), win_key_callback);
             glfwSwapInterval(0);
             glewExperimental=true;
             if (glewInit() != GLEW_OK)

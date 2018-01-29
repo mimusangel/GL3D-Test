@@ -8,9 +8,9 @@ class AWidget {
 private:
 	bool		_dad;
 	bool		_enter;
+	bool		_lClick;
+	bool		_rClick;
 
-	static bool		_LClick;
-	static bool		_RClick;
 	static AWidget	*_Focus;
 
 protected:
@@ -34,12 +34,16 @@ public:
 	virtual void	mouseLeave(GLFWwindow *window, double x, double y) {};
 	virtual void	mouseUp(GLFWwindow *window, double x, double y, int button) {};
 	virtual void	mouseClick(GLFWwindow *window, double x, double y, int button) {};
-
+    virtual void    keyPress(GLFWwindow *window, int key) {};
+    virtual void    keyRelease(GLFWwindow *window, int key) {};
+    virtual void    keyRepeat(GLFWwindow *window, int key) {};
+	
 	Vec2f	getPosition(void);
 	Vec2f	&getLocalPosition(void);
 	AWidget	&setLocalPosition(Vec2f const &rhs);
 	Vec2f	&getSize(void);
 	AWidget	&setSize(Vec2f const &rhs);
+	inline bool		isMouseOver(void) { return (_enter); }
 };
 
 #endif

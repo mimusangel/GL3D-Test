@@ -20,7 +20,7 @@ Loader::Loader(void)
 		"out vec2 gScale;"
 		"void main()"
 		"{"
-		"	vec2 pos = (vertexPosition - vec2(640, 360) + blockScale) / vec2(640, -360);"
+		"	vec2 pos = (vertexPosition - vec2(640, 360)) / vec2(640, -360);"
 		"   gl_Position = vec4(pos, 0, 1);"
 		"	gColor = vertexColor;"
 		"	gScale = blockScale;"

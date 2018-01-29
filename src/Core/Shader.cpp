@@ -153,3 +153,25 @@ void			Shader::uniform2f(std::string const &name, Vec2f const &vec)
 {
 	uniform2f(name, vec.getX(), vec.getY());
 }
+
+void			Shader::uniform3f(std::string const &name, float x, float y, float z)
+{
+	GLint id = glGetUniformLocation(_program, name.c_str());
+	glUniform3f(id, x, y, z);
+}
+
+void			Shader::uniform3f(std::string const &name, float *data)
+{
+	uniform3f(name, data[0], data[1], data[2]);
+}
+
+void			Shader::uniform4f(std::string const &name, float x, float y, float z, float w)
+{
+	GLint id = glGetUniformLocation(_program, name.c_str());
+	glUniform4f(id, x, y, z, w);
+}
+
+void			Shader::uniform4f(std::string const &name, float *data)
+{
+	uniform4f(name, data[0], data[1], data[2], data[3]);
+}

@@ -6,10 +6,13 @@ SRC = main.cpp\
 	Core/Shader.cpp\
 	Core/Vec2f.cpp\
 	Core/AWidget.cpp\
+	Core/Button.cpp\
 	\
 	Game/Loader.cpp\
 	Game/Renderer.cpp\
-	Game/SceneMain.cpp
+	Game/SceneMain.cpp\
+	Game/SceneGame.cpp\
+	Game/SceneGameMenu.cpp
 
 
 ifeq ($(OS),Windows_NT)

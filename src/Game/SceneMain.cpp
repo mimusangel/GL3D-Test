@@ -1,12 +1,25 @@
 #include "SceneMain.hpp"
 #include "Loader.hpp"
 #include "Renderer.hpp"
+#include "../Core/Button.hpp"
+#include "../Core/Core.hpp"
+#include "SceneGame.hpp"
 
 SceneMain::SceneMain(void) :
-	AWidget(),
-	_mesh(NULL)
+	AWidget()
 {}
+
 SceneMain::~SceneMain(void)
+{}
+
+void	SceneMain::load(void)
+{
+	glClearColor(0.4, 0.4, 1.0, 1.0);
+	_list.push_back(new Button("Start", this, Vec2f(1060, 684), Vec2f(100, 26), this));
+	_list.push_back(new Button("Exit", this, Vec2f(1170, 684), Vec2f(100, 26), this));
+}
+
+void	SceneMain::unload(void)
 {
 	while (!_list.empty())
 	{
@@ -15,39 +28,40 @@ SceneMain::~SceneMain(void)
 	}
 }
 
-void	SceneMain::load(void)
-{
-	_mesh = new Mesh(2);
-	const float vertPos[] = {
-		640.0f, 360.0f,
-	};
-	const float vertColor[] = {
-		0.1f,   0.4f,   0.1f,   1.0f,
-	};
-	_mesh->add(0, GL_FLOAT, 2, (void *)vertPos, 1);
-	_mesh->add(1, GL_FLOAT, 4, (void *)vertColor, 1);
-}
-
-void	SceneMain::unload(void)
-{
-	if (_mesh != NULL)
-		delete _mesh;
-}
-
 void 	SceneMain::update(GLFWwindow *window)
 {
-
+	std::vector<AWidget *>::iterator it = _list.begin();
+	while (it != _list.end())
+	{
+		(*it)->update(window);
+		++it;
+	}
 }
 
 void	SceneMain::render(void)
 {
-	static Loader loader = Loader::GetInstance();
-	if (_mesh == NULL)
+	std::vector<AWidget *>::iterator it = _list.begin();
+	while (it != _list.end())
+	{
+		(*it)->render();
+		++it;
+	}
+}
+
+
+void	SceneMain::action(GLFWwindow *window, AWidget *src)
+{
+	Core *game = (Core *)glfwGetWindowUserPointer(window);
+	if (game == NULL)
 		return ;
-	glPointSize(3.0f);
-	loader.getShaderBase()->bind();
-	loader.getShaderBase()->uniform2f("blockScale", 2.0f, 1.0f);
-	_mesh->render(GL_POINTS);
-	Shader::Unbind();
-	glPointSize(1.0f);
+	if (src == _list[0])
+	{
+		game->loadScene(new SceneGame());
+		return ;
+	}
+	if (src == _list[1])
+	{
+		game->closeRequest();
+		return ;
+	}
 }

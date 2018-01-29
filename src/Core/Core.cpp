@@ -1,6 +1,7 @@
 #include "Core.hpp"
 #include "Timer.hpp"
 
+#include "Button.hpp"
 #include "Mesh.hpp"
 #include "Shader.hpp"
 
@@ -11,6 +12,7 @@ Core::Core(void) :
 {
 	_window = glfwCreateWindow(_width, _height, "Color Running", NULL, NULL);
 	_scene = NULL;
+	_lastScene = NULL;
 }
 
 Core::~Core(void)
@@ -29,14 +31,19 @@ void                    Core::loop(void)
 	int				tickCount = 0;
 	int				frameCount = 0;
 	double			timer = 0.0;
-	glEnable(GL_CULL_FACE);
-	glClearColor(0.4, 0.4, 0.4, 1.0);
-	while (!glfwWindowShouldClose(_window))
+	
+	while (!glfwWindowShouldClose(_window) && running)
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 		Timer::Update();
 
 		tickTimer += Timer::GetDelta();
+		if (_lastScene != NULL)
+		{
+			_lastScene->unload();
+			delete _lastScene;
+			_lastScene = NULL;
+		}
 		while (tickTimer >= tickPerSec)
 		{
 			if (_scene != NULL)
@@ -72,7 +79,10 @@ void                    Core::viewport(int width, int height)
 
 void                    Core::load(void)
 {
-
+	Button::Load();
+	glEnable(GL_CULL_FACE);
+	glClearColor(0.0, 0.0, 0.0, 1.0);
+	running = true;
 }
 
 void                    Core::unload(void)
@@ -84,6 +94,7 @@ void                    Core::unload(void)
 		delete _scene;
 		_scene = NULL;
 	}
+	Button::UnLoad();
 }
 
 
@@ -91,11 +102,29 @@ void                    Core::loadScene(AWidget *scene)
 {
 	if (_scene != NULL)
 	{
-		_scene->unload();
-		delete _scene;
+		_lastScene = _scene;
 		_scene = NULL;
 	}
 	_scene = scene;
 	if (_scene != NULL)
-		_scene ->load();
+		_scene->load();
+}
+
+
+void                    Core::keyPress(int key)
+{
+	if (_scene != NULL)
+		_scene->keyPress(_window, key);
+}
+
+void                    Core::keyRelease(int key)
+{
+	if (_scene != NULL)
+		_scene->keyRelease(_window, key);
+}
+
+void                    Core::keyRepeat(int key)
+{
+	if (_scene != NULL)
+		_scene->keyRepeat(_window, key);
 }

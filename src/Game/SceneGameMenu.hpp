@@ -1,5 +1,5 @@
-#ifndef SCENEMAIN_HPP
-#define SCENEMAIN_HPP
+#ifndef SCENEGAMEMENU_HPP
+#define SCENEGAMEMENU_HPP
 
 #include <vector>
 
@@ -7,13 +7,13 @@
 #include "../Core/AWidget.hpp"
 #include "../Core/Mesh.hpp"
 
-class SceneMain: public virtual AWidget, public IListenner {
+class SceneGameMenu: public virtual AWidget, public IListenner {
 protected:
 	std::vector<AWidget *>	_list;
 
 public:
-	SceneMain(void);
-	~SceneMain(void);
+	SceneGameMenu(Vec2f pos);
+	~SceneGameMenu(void);
 	void	load(void);
 	void	unload(void);
 	void 	update(GLFWwindow *window);

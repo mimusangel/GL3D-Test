@@ -1,7 +1,5 @@
 #include "AWidget.hpp"
 
-bool		AWidget::_LClick = false;
-bool		AWidget::_RClick = false;
 AWidget		*AWidget::_Focus = NULL;
 
 AWidget::AWidget(AWidget *parent, Vec2f const &pos, Vec2f const &size) :
@@ -17,8 +15,9 @@ void 	AWidget::update(GLFWwindow *window)
 {
 	double xpos, ypos;
 	glfwGetCursorPos(window, &xpos, &ypos);
-	if (xpos >= _pos.getX() && xpos < _pos.getX() + _size.getX()
-		&& ypos >= _pos.getY() && ypos < _pos.getY() + _size.getY())
+	Vec2f pos = getPosition();
+	if (xpos >= pos.getX() && xpos < pos.getX() + _size.getX()
+		&& ypos >= pos.getY() && ypos < pos.getY() + _size.getY())
 	{
 		if (!_enter)
 		{
@@ -29,48 +28,48 @@ void 	AWidget::update(GLFWwindow *window)
 		if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
 		{
 			mouseDown(window, xpos, ypos, GLFW_MOUSE_BUTTON_LEFT);
-			mouseDrag(window, xpos, ypos, xpos - _pos.getX(), ypos - _pos.getY());
+			mouseDrag(window, xpos, ypos, xpos - pos.getX(), ypos - pos.getY());
 			_dad = true;
-			_LClick = true;
+			_lClick = true;
 			_Focus = this;
 		}
 		else
 		{
 			mouseUp(window, xpos, ypos, GLFW_MOUSE_BUTTON_LEFT);
-			if (_LClick)
+			if (_lClick)
 			{
 				mouseClick(window, xpos, ypos, GLFW_MOUSE_BUTTON_LEFT);
-				_LClick = false;
+				_lClick = false;
 			}
 			if (_dad)
 			{
-				mouseDrop(window, xpos, ypos, xpos - _pos.getX(), ypos - _pos.getY());
+				mouseDrop(window, xpos, ypos, xpos - pos.getX(), ypos - pos.getY());
 				_dad = false;
 			}
 		}
 		if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
 		{
 			mouseDown(window, xpos, ypos, GLFW_MOUSE_BUTTON_RIGHT);
-			_RClick = true;
+			_rClick = true;
 			_Focus = this;
 		}
 		else
 		{
-			if (_RClick)
+			if (_rClick)
 			{
 				mouseClick(window, xpos, ypos, GLFW_MOUSE_BUTTON_RIGHT);
-				_RClick = false;
+				_rClick = false;
 			}
 			mouseUp(window, xpos, ypos, GLFW_MOUSE_BUTTON_RIGHT);
 		}
 	}
 	else
 	{
-		_LClick = false;
-		_RClick = false;
+		_lClick = false;
+		_rClick = false;
 		if (_dad)
 		{
-			mouseDrop(window, xpos, ypos, xpos - _pos.getX(), ypos - _pos.getY());
+			mouseDrop(window, xpos, ypos, xpos - pos.getX(), ypos - pos.getY());
 			_dad = false;
 		}
 		if (_enter)
