@@ -60,6 +60,7 @@ void                    Core::loop(void)
 		timer += Timer::GetDelta();
 		if (timer >= 1.0)
 		{
+			// std::cout << "FPS: " << frameCount << " / UPS: " << tickCount << std::endl;
 			_ups = tickCount;
 			_fps = frameCount;
 			tickCount = 0;

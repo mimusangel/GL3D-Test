@@ -11,7 +11,8 @@ SRC = main.cpp\
 	Game/Renderer.cpp\
 	Game/SceneMain.cpp\
 	Game/SceneGame.cpp\
-	Game/SceneGameMenu.cpp
+	Game/SceneGameMenu.cpp\
+	Game/Player.cpp
 
 
 ifeq ($(OS),Windows_NT)

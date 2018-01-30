@@ -2,7 +2,9 @@
 
 SceneGame::SceneGame(void) :
 	AWidget(),
-	_menu(NULL)
+	_menu(NULL),
+	_pause(false),
+	_player(Vec2f(32.0, 480.0))
 {}
 
 SceneGame::~SceneGame(void)
@@ -40,12 +42,14 @@ void 	SceneGame::update(GLFWwindow *window)
 		_menu->update(window);
 	else
 	{
-
+		_player.update(window);
 	}
 }
 
 void	SceneGame::render(void)
 {
+	_player.render();
+
 	if (_menu != NULL && _pause)
 		_menu->render();
 }

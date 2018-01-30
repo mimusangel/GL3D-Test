@@ -5,11 +5,13 @@
 #include "../Core/AWidget.hpp"
 #include "../Core/Mesh.hpp"
 #include "SceneGameMenu.hpp"
+#include "Player.hpp"
 
 class SceneGame: public virtual AWidget {
 protected:
 	SceneGameMenu		*_menu;
 	bool				_pause;
+	Player				_player;
 
 public:
 	SceneGame(void);
