@@ -5,6 +5,7 @@
 Player::Player(Vec2f const &pos) :
 	_pos(pos),
 	_velocity(0),
+	_ground(false),
 	_shader(NULL)
 {
 	_shader = new Shader(3);
@@ -75,10 +76,26 @@ void	Player::update(GLFWwindow *window)
 	{
 		nDir.setX(nDir.getX() - 1);
 	}
-	// 	nDir += Vec2f(-1.0, 0.0);
+	if (_ground && glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+	{
+		nDir.setY(-150.0f);
+		_ground = false;
+	}
+	_velocity += Vec2f(0.0, 1.0) * 10.0f;
 	_velocity += nDir * 10.0f;
 	_pos += _velocity * Timer::GetDelta();
-	_velocity *= 0.99f;
+	if (_ground)
+		_velocity.setX(_velocity.getX() * 0.99f);
+	else
+		_velocity.setX(_velocity.getX() * 0.999f);
 	if (_velocity.getX() > -0.001f && _velocity.getX() < 0.001f)
 		_velocity.setX(0.0);
+	
+
+	if (_pos.getY() >= 700)
+	{
+		_pos.setY(700);
+		_ground = true;
+		_velocity.setY(0);
+	}
 }
