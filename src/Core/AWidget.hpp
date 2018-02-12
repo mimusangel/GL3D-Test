@@ -2,7 +2,7 @@
 #define AWIDGET_HPP
 
 #include "global.hpp"
-#include "Vec2f.hpp"
+#include "Math/Vec2.hpp"
 
 class AWidget {
 private:

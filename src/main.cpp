@@ -30,6 +30,7 @@ static void win_key_callback(GLFWwindow* window, int key, int scancode, int acti
 
 int main(void)
 {
+    double t = 3.14159265358979323846264338327950288419716939937510582;
     if (!glfwInit())
         std::cout << "Failed to initialize GLFW\n";
     else

@@ -1,12 +1,12 @@
-NAME = ColorRunner
+NAME = GL3D
 SRC = main.cpp\
 	Core/Core.cpp\
 	Core/Timer.cpp\
 	Core/Mesh.cpp\
 	Core/Shader.cpp\
-	Core/Vec2f.cpp\
 	Core/AWidget.cpp\
 	Core/Button.cpp\
+	\
 	\
 	Game/Renderer.cpp\
 	Game/SceneMain.cpp\
