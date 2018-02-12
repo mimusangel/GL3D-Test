@@ -3,6 +3,7 @@
 
 #include "global.hpp"
 #include "Math/Vec2.hpp"
+#include "Math/Vec3.hpp"
 
 class Shader {
 private:
@@ -23,6 +24,7 @@ public:
 	void			uniform2f(std::string const &name, float *data);
 	void			uniform2f(std::string const &name, Vec2f const &vec);
 	void			uniform3f(std::string const &name, float x, float y, float z);
+	void			uniform3f(std::string const &name, Vec3f const &vec);
 	void			uniform3f(std::string const &name, float *data);
 	void			uniform4f(std::string const &name, float x, float y, float z, float w);
 	void			uniform4f(std::string const &name, float *data);
