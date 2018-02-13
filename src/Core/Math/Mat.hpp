@@ -38,6 +38,11 @@ public:
         return (mat);
     }
 
+    Vec3f		operator*(Vec3f &v)
+    {
+        return (transform(v));
+    }
+
     float               at(int x) const
     {
         if (x < 0 || x >= S * S)
