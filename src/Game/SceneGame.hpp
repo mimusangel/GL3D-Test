@@ -13,6 +13,7 @@ class SceneGame: public virtual AWidget {
 protected:
 	SceneGameMenu		*_menu;
 	bool				_pause;
+	Vec3f				_camPosition;
 
 	Mat4				projection;
 	Shader				*_terrainShader;
@@ -26,9 +27,12 @@ public:
 	void 	update(GLFWwindow *window);
 	void	render(void);
 	void    keyRelease(GLFWwindow *window, int key);
-	
+	void    keyPress(GLFWwindow *window, int key);
+	void    keyRepeat(GLFWwindow *window, int key);
+
 	inline bool isPause(void) { return (_pause); }
 	inline void setPause(bool pause) { _pause = pause; }
+	void	moveCamera(int key);
 };
 
 #endif

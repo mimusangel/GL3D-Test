@@ -146,7 +146,7 @@ public:
 
     Vec3            &set(T x, T y, T z)
     {
-        return (setX(x).setY(y).setY(z));
+        return (setX(x).setY(y).setZ(z));
     }
 
     Vec3            &set(Vec3 const &rhs)

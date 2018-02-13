@@ -46,7 +46,19 @@ public:
     }
 
     float       *data(void) { return (_data); }
-    
+
+    Vec3f		transform(Vec3f &v)
+    {
+        return (Vec3f(
+            _data[0] * v[0] + _data[4] * v[1] + _data[8] * v[2] + _data[12],
+            _data[1] * v[0] + _data[5] * v[1] + _data[9] * v[2] + _data[13],
+            _data[2] * v[0] + _data[6] * v[1] + _data[10] * v[2] + _data[14]
+        ));
+    }    
+
+    /*
+    ** Matrice Static
+    */
     static Mat4     Identity(void)
     {
         Mat4 mat;
@@ -110,28 +122,46 @@ public:
 
     static Mat4	Rotate(float x, float y, float z)
     {
-        Mat4 rx = Identity();
-        Mat4 ry = Identity();
-        Mat4 rz = Identity();
-        float xcos = cosf(x);
-        float xsin = sinf(x);
-        float ycos = cosf(y);
-        float ysin = sinf(y);
-        float zcos = cosf(z);
-        float zsin = sinf(z);
-        rx[5] = xcos;
-        rx[6] = xsin;
-        rx[9] = -xsin;
-        rx[10] = xcos;
-        ry[0] = ycos;
-        ry[2] = ysin;
-        ry[8] = -ysin;
-        ry[10] = ycos;
-        rz[0] = zcos;
-        rz[1] = zsin;
-        rz[4] = -zsin;
-        rz[5] = zcos;
+        Mat4 rx = RotateX(x);
+        Mat4 ry = RotateY(y);
+        Mat4 rz = RotateZ(z);
         return rz * (ry * rx);
+    }
+
+    static Mat4	RotateX(float r)
+    {
+        Mat4 mat = Identity();
+        float rcos = cosf(r);
+        float rsin = sinf(r);
+        mat[5] = rcos;
+        mat[6] = rsin;
+        mat[9] = -rsin;
+        mat[10] = rcos;
+        return (mat);
+    }
+
+    static Mat4	RotateY(float r)
+    {
+        Mat4 mat = Identity();
+        float rcos = cosf(r);
+        float rsin = sinf(r);
+        mat[0] = rcos;
+        mat[2] = rsin;
+        mat[8] = -rsin;
+        mat[10] = rcos;
+        return (mat);
+    }
+
+    static Mat4	RotateZ(float r)
+    {
+        Mat4 mat = Identity();
+        float rcos = cosf(r);
+        float rsin = sinf(r);
+        mat[0] = rcos;
+        mat[1] = rsin;
+        mat[4] = -rsin;
+        mat[5] = rcos;
+        return (mat);
     }
 
     static Mat4	Rotate(Vec3f const &vec)

@@ -4,7 +4,8 @@
 SceneGame::SceneGame(void) :
 	AWidget(),
 	_menu(NULL),
-	_pause(false)
+	_pause(false),
+	_camPosition(0, 0.5f, 0)
 {
 	projection = Mat4::Perspective(M_TORADIANS(70.0f), 1280.0f / 720.0f, .001f, 1000.0f);
 	_terrainShader = NULL;
@@ -90,8 +91,8 @@ void 	SceneGame::update(GLFWwindow *window)
 void	SceneGame::render(void)
 {
 	_terrainShader->bind();
-	Mat4 model = Mat4::Translate(0, 0, 0) * Mat4::Rotate(0.0f, M_TORADIANS(45.0f), 0.0f);
-	Mat4 view = Mat4::Translate(0, -0.5f, 1);
+	Mat4 model = Mat4::Translate(0, 0, 0);
+	Mat4 view = Mat4::Translate(-_camPosition.getX(), -_camPosition.getY(), -_camPosition.getZ());
 	// std::cout << model << std::endl;
 	_terrainShader->uniformMat("model", model);
 	_terrainShader->uniformMat("view", view);
@@ -111,4 +112,24 @@ void    SceneGame::keyRelease(GLFWwindow *window, int key)
 	{
 		_pause = !_pause;
 	}
+}
+
+void    SceneGame::keyPress(GLFWwindow *window, int key)
+{
+	moveCamera(key);
+}
+
+void    SceneGame::keyRepeat(GLFWwindow *window, int key)
+{
+	moveCamera(key);
+}
+
+void	SceneGame::moveCamera(int key)
+{
+	if (_pause)
+		return ;
+	if (key == GLFW_KEY_W)
+		_camPosition += Vec3f(0, 0, 1);
+	if (key == GLFW_KEY_S)
+		_camPosition += Vec3f(0, 0, -1);
 }
