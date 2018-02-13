@@ -3,10 +3,9 @@
 
 #include <vector>
 
-#include "../Core/IListenner.hpp"
-#include "../Core/AWidget.hpp"
-#include "../Core/Mesh.hpp"
-#include "../Core/Shader.hpp"
+#include "../Core/UI/IListenner.hpp"
+#include "../Core/UI/AWidget.hpp"
+#include "../Core/Shader/Shader.hpp"
 
 class SceneGameMenu: public virtual AWidget, public IListenner {
 protected:

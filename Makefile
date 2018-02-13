@@ -3,9 +3,9 @@ SRC = main.cpp\
 	Core/Core.cpp\
 	Core/Timer.cpp\
 	Core/Mesh.cpp\
-	Core/Shader.cpp\
-	Core/AWidget.cpp\
-	Core/Button.cpp\
+	Core/UI/AWidget.cpp\
+	Core/UI/Button.cpp\
+	Core/Shader/Shader.cpp\
 	\
 	\
 	Game/Renderer.cpp\

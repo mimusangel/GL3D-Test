@@ -1,9 +1,7 @@
 #include "Core.hpp"
 #include "Timer.hpp"
 
-#include "Button.hpp"
-#include "Mesh.hpp"
-#include "Shader.hpp"
+#include "UI/Button.hpp"
 
 Core::Core(void) :
 	_window(NULL),

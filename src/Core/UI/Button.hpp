@@ -1,10 +1,10 @@
 #ifndef BUTTON_HPP
 #define BUTTON_HPP
 
-#include "Mesh.hpp"
-#include "Shader.hpp"
-#include "IListenner.hpp"
-#include "AWidget.hpp"
+#include "../Mesh.hpp"
+#include "../Shader/Shader.hpp"
+#include "../UI/IListenner.hpp"
+#include "../UI/AWidget.hpp"
 
 class Button : public AWidget {
 private:

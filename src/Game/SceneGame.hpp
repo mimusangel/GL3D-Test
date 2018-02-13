@@ -1,8 +1,8 @@
 #ifndef SCENEGAME_HPP
 #define SCENEGAME_HPP
 
-#include "../Core/IListenner.hpp"
-#include "../Core/AWidget.hpp"
+#include "../Core/UI/IListenner.hpp"
+#include "../Core/UI/AWidget.hpp"
 #include "../Core/Mesh.hpp"
 #include "SceneGameMenu.hpp"
 #include "Player.hpp"

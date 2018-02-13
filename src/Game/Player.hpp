@@ -2,7 +2,7 @@
 #define PLAYER_HPP
 
 #include "../Core/global.hpp"
-#include "../Core/Shader.hpp"
+#include "../Core/Shader/Shader.hpp"
 #include "../Core/Math/Vec2.hpp"
 #include "../Core/Math/Vec3.hpp"
 

@@ -1,8 +1,8 @@
 #ifndef AWIDGET_HPP
 #define AWIDGET_HPP
 
-#include "global.hpp"
-#include "Math/Vec2.hpp"
+#include "../global.hpp"
+#include "../Math/Vec2.hpp"
 
 class AWidget {
 private:

@@ -1,7 +1,7 @@
 #include "SceneGameMenu.hpp"
 #include "SceneGame.hpp"
 #include "SceneMain.hpp"
-#include "../Core/Button.hpp"
+#include "../Core/UI/Button.hpp"
 #include "../Core/Core.hpp"
 #include "Renderer.hpp"
 

@@ -1,9 +1,9 @@
 #ifndef SHADER_HPP
 #define SHADER_HPP
 
-#include "global.hpp"
-#include "Math/Vec2.hpp"
-#include "Math/Vec3.hpp"
+#include "../global.hpp"
+#include "../Math/Vec2.hpp"
+#include "../Math/Vec3.hpp"
 
 class Shader {
 private:

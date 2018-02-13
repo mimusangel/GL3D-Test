@@ -1,7 +1,7 @@
 #ifndef ILISTENNER_HPP
 #define ILISTENNER_HPP
 
-#include "global.hpp"
+#include "../global.hpp"
 #include "AWidget.hpp"
 
 class IListenner {

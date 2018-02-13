@@ -2,7 +2,7 @@
 #define CORE_HPP
 
 #include "global.hpp"
-#include "AWidget.hpp"
+#include "UI/AWidget.hpp"
 
 class Core {
 private:
