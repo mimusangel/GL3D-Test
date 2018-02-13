@@ -90,6 +90,9 @@ void 	SceneGame::update(GLFWwindow *window)
 
 void	SceneGame::render(void)
 {
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 	_terrainShader->bind();
 	Mat4 model = Mat4::Translate(0, 0, 0);
 	Mat4 view = Mat4::Translate(-_camPosition.getX(), -_camPosition.getY(), -_camPosition.getZ());
@@ -103,7 +106,10 @@ void	SceneGame::render(void)
 	_terrainShader->unbind();
 
 	if (_menu != NULL && _pause)
+	{
+		glDisable(GL_DEPTH_TEST);
 		_menu->render();
+	}
 }
 
 void    SceneGame::keyRelease(GLFWwindow *window, int key)
