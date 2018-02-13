@@ -9,14 +9,16 @@ template<int S>
 class Mat {
 private:
     float   _data[S * S];
+
+public:
+    typedef Mat<4> Mat4;
+
+
     Mat(void)
     {
         for (int i = 0; i < S * S; i++)
             _data[i] = 0.0f;
     }
-
-public:
-    typedef Mat<4> Mat4;
 
     float               &operator[](int x)
     {
@@ -32,7 +34,7 @@ public:
         for (int i = 0; i < S; i++)
             for (int j = 0; j < S; j++)
                 for (int k = 0; k < S; k++)
-                    mat[i + j * S] += _data[k + j * S] * v[i + k * S];
+                    mat[i + j * S] += _data[k + j * S] * v.at(i + k * S);
         return (mat);
     }
 
@@ -55,7 +57,7 @@ public:
 
     static Mat4     Translate(float x, float y, float z)
     {
-        Mat4 mat;
+        Mat4 mat = Identity();
         mat[12] = x;
         mat[13] = y;
         mat[14] = z;
@@ -79,7 +81,7 @@ public:
 
     static Mat4     Scale(float x, float y, float z)
     {
-        Mat4 mat;
+        Mat4 mat = Identity();
         mat[0] = x;
         mat[5] = y;
         mat[10] = z;
@@ -106,7 +108,7 @@ public:
         return (Scale(i, i, i));
     }
 
-    Mat4	Rotate(float x, float y, float z)
+    static Mat4	Rotate(float x, float y, float z)
     {
         Mat4 rx = Identity();
         Mat4 ry = Identity();
@@ -132,16 +134,16 @@ public:
         return rz * (ry * rx);
     }
 
-    Mat4	Rotate(Vec3f const &vec)
+    static Mat4	Rotate(Vec3f const &vec)
     {
         return (Rotate(vec.getX(), vec.getY(), vec.getZ()));
     }
 
 
-    Mat4	Perspective(float fov, float aspect, float zNear, float zFar)
+    static Mat4	Perspective(float fov, float aspect, float zNear, float zFar)
     {
         Mat4 result;
-        fov = tanf(M_TORADIANS(fov / 2.f));
+        fov = tanf(fov / 2.f);
         float dist = zNear - zFar;
         result[0] = 1.f / (fov * aspect);
         result[5] = 1.f / fov;
@@ -151,7 +153,7 @@ public:
         return (result);
     }
 
-    Mat4	Orthographic(float left, float right, float bottom, float top, float zNear, float zFar)
+    static Mat4	Orthographic(float left, float right, float bottom, float top, float zNear, float zFar)
     {
         Mat4 result = Identity();
         result[0] = 2.f / (right - left);

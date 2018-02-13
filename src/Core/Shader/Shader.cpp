@@ -171,3 +171,9 @@ void			Shader::uniform4f(std::string const &name, float *data)
 {
 	uniform4f(name, data[0], data[1], data[2], data[3]);
 }
+
+void			Shader::uniformMat(std::string const &name, Mat4 &mat)
+{
+	GLint id = glGetUniformLocation(_program, name.c_str());
+	glUniformMatrix4fv(id, 1, GL_FALSE, &mat[0]);
+}

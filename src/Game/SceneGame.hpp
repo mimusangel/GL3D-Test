@@ -3,16 +3,20 @@
 
 #include "../Core/UI/IListenner.hpp"
 #include "../Core/UI/AWidget.hpp"
+#include "../Core/Shader/Shader.hpp"
 #include "../Core/Mesh.hpp"
+#include "../Core/Math/Mat.hpp"
+
 #include "SceneGameMenu.hpp"
-#include "Player.hpp"
 
 class SceneGame: public virtual AWidget {
 protected:
 	SceneGameMenu		*_menu;
 	bool				_pause;
-	Player				_player;
 
+	Mat4				projection;
+	Shader				*_terrainShader;
+	Mesh				*_terrainMesh;
 public:
 	SceneGame(void);
 	~SceneGame(void);

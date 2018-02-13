@@ -4,6 +4,7 @@
 #include "../global.hpp"
 #include "../Math/Vec2.hpp"
 #include "../Math/Vec3.hpp"
+#include "../Math/Mat.hpp"
 
 class Shader {
 private:
@@ -28,6 +29,7 @@ public:
 	void			uniform3f(std::string const &name, float *data);
 	void			uniform4f(std::string const &name, float x, float y, float z, float w);
 	void			uniform4f(std::string const &name, float *data);
+	void			uniformMat(std::string const &name, Mat4 &mat);
 };
 
 #endif

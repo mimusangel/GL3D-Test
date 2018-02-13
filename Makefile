@@ -3,6 +3,7 @@ SRC = main.cpp\
 	Core/Core.cpp\
 	Core/Timer.cpp\
 	Core/Mesh.cpp\
+	Core/FileUtils.cpp\
 	Core/UI/AWidget.cpp\
 	Core/UI/Button.cpp\
 	Core/Shader/Shader.cpp\
@@ -11,8 +12,7 @@ SRC = main.cpp\
 	Game/Renderer.cpp\
 	Game/SceneMain.cpp\
 	Game/SceneGame.cpp\
-	Game/SceneGameMenu.cpp\
-	Game/Player.cpp
+	Game/SceneGameMenu.cpp
 
 
 ifeq ($(OS),Windows_NT)
