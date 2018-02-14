@@ -61,55 +61,58 @@ public:
         return (set(_x / rhs.getX(), _y / rhs.getY(), _z / rhs.getZ()));
     }
 
-    template<typename U>
-    Vec3			operator*(U const rhs)
+    Vec3			operator*(T const rhs)
     {
         return (Vec3<T>(_x * rhs, _y * rhs, _z * rhs));
     }
 
-    template<typename U>
-    Vec3			operator/(U const rhs)
+    Vec3			operator/(T const rhs)
     {
         return (Vec3<T>(_x / rhs, _y / rhs, _z / rhs));
     }
 
-    template<typename U>
-    Vec3			operator+(U const rhs)
+    Vec3			operator+(T const rhs)
     {
         return (Vec3<T>(_x + rhs, _y + rhs, _z + rhs));
     }
 
-    template<typename U>
-    Vec3			operator-(U const rhs)
+    Vec3			operator-(T const rhs)
     {
         return (Vec3<T>(_x - rhs, _y - rhs, _z - rhs));
     }
 
-    template<typename U>
-    Vec3			operator*=(U const rhs)
+    Vec3			operator*=(T const rhs)
     {
         return (set(_x * rhs, _y * rhs, _z * rhs));
     }
 
-    template<typename U>
-    Vec3			operator/=(U const rhs)
+    Vec3			operator/=(T const rhs)
     {
         return (set(_x / rhs, _y / rhs, _z / rhs));
     }
 
-    template<typename U>
-    Vec3			operator+=(U const rhs)
+    Vec3			operator+=(T const rhs)
     {
         return (set(_x + rhs, _y + rhs, _z + rhs));
     }
 
-    template<typename U>
-    Vec3			operator-=(U const rhs)
+    Vec3			operator-=(T const rhs)
     {
         return (set(_x - rhs, _y - rhs, _z - rhs));
     }
 
     T               &operator[](int x)
+    {
+        if (x < 0 || x > 2)
+            throw std::out_of_range("range is invalid!");
+        if (x == 1)
+            return (_y);
+        else if (x == 2)
+            return (_z);
+        return (_x);
+    }
+
+    float               at(int x) const
     {
         if (x < 0 || x > 2)
             throw std::out_of_range("range is invalid!");
@@ -176,9 +179,9 @@ public:
 
     Vec3		    cross(Vec3 const &v)
     {
-        return (Vec3f(_y * v[2] - _z * v[1],
-           _z * v[0] - _x * v[2],
-            _x * v[1] - _y * v[0]
+        return (Vec3<T>(_y * v.at(2) - _z * v.at(1),
+           _z * v.at(0) - _x * v.at(2),
+            _x * v.at(1) - _y * v.at(0)
         ));
     }
 
@@ -214,6 +217,11 @@ public:
     Vec3            copy(void)
     {
         return (Vec3<T>(*this));
+    }
+
+    Vec3            negate(void)
+    {
+        return (Vec3<T>(-_x, -_y, -_z));
     }
 };
 

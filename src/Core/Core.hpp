@@ -33,6 +33,9 @@ public:
     void                    keyPress(int key);
     void                    keyRelease(int key);
     void                    keyRepeat(int key);
+    void                    mouseMove(float x, float y);
+    void                    mouseButtonPress(int button);
+    void                    mouseButtonRelease(int button);
 };
 
 #endif

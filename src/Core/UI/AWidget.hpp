@@ -37,7 +37,10 @@ public:
     virtual void    keyPress(GLFWwindow *window, int key) {};
     virtual void    keyRelease(GLFWwindow *window, int key) {};
     virtual void    keyRepeat(GLFWwindow *window, int key) {};
-	
+	virtual void	mouseMove(GLFWwindow *window, float x, float y) {};
+    virtual void    mouseButtonPress(GLFWwindow *window, int button) {};
+    virtual void    mouseButtonRelease(GLFWwindow *window, int button) {};
+
 	Vec2f	getPosition(void);
 	Vec2f	&getLocalPosition(void);
 	AWidget	&setLocalPosition(Vec2f const &rhs);

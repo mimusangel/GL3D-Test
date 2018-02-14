@@ -127,3 +127,22 @@ void                    Core::keyRepeat(int key)
 	if (_scene != NULL)
 		_scene->keyRepeat(_window, key);
 }
+
+void                    Core::mouseMove(float x, float y)
+{
+	if (_scene != NULL)
+		_scene->mouseMove(_window, x, y);
+}
+
+
+void                    Core::mouseButtonPress(int button)
+{
+	if (_scene != NULL)
+		_scene->mouseButtonPress(_window, button);
+}
+
+void                    Core::mouseButtonRelease(int button)
+{
+	if (_scene != NULL)
+		_scene->mouseButtonRelease(_window, button);
+}

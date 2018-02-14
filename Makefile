@@ -51,7 +51,8 @@ endif
 all: $(NAME)
 
 src/%.o: src/%.cpp
-	$(CXX) -c -o $@ $< $(INCS)
+	@echo "    Compiling  $*"
+	@$(CXX) -c -o $@ $< $(INCS)
 
 $(NAME): $(O_FILE)
 	$(CXX) $(LIBS) -o $(NAME) $(O_FILE) $(INCS)

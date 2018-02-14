@@ -8,14 +8,15 @@
 #include "../Core/Math/Mat.hpp"
 
 #include "SceneGameMenu.hpp"
+#include "Utils/Camera.hpp"
 
 class SceneGame: public virtual AWidget {
 protected:
 	SceneGameMenu		*_menu;
 	bool				_pause;
-	Vec3f				_camPosition;
 
-	Mat4				projection;
+	Camera				_camera;
+	Mat4				_projection;
 	Shader				*_terrainShader;
 	Mesh				*_terrainMesh;
 public:
@@ -29,10 +30,11 @@ public:
 	void    keyRelease(GLFWwindow *window, int key);
 	void    keyPress(GLFWwindow *window, int key);
 	void    keyRepeat(GLFWwindow *window, int key);
+	void    mouseButtonPress(GLFWwindow *window, int button);
+	void	mouseMove(GLFWwindow *window, float x, float y);
 
 	inline bool isPause(void) { return (_pause); }
-	inline void setPause(bool pause) { _pause = pause; }
-	void	moveCamera(int key);
+	void setPause(bool pause);
 };
 
 #endif

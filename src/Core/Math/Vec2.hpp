@@ -116,6 +116,15 @@ public:
         return (_x);
     }
 
+    float               at(int x) const
+    {
+        if (x < 0 || x > 1)
+            throw std::out_of_range("range is invalid!");
+        if (x == 1)
+            return (_y);
+        return (_x);
+    }
+
     T               getX(void) const { return (_x); }
 
     Vec2            &setX(T x)
