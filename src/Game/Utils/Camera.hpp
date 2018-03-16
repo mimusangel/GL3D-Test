@@ -85,6 +85,13 @@ public:
 			return ;
 		_position += dir * 1.0f;// * (float)Timer::GetDelta();
 	}
+
+	void	setKey(int key, bool press)
+	{
+		if (!_grab)
+			return ;
+		//GLFW_KEY_W
+	}
 };
 
 #endif

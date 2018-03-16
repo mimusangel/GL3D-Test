@@ -152,75 +152,18 @@ void    SceneGame::keyRelease(GLFWwindow *window, int key)
 		_pause = !_pause;
 		_camera.setGrab(window, false);
 	}
+	_camera.setKey(key, false);
 }
 
 void    SceneGame::keyPress(GLFWwindow *window, int key)
 {
 	
-	if (key == GLFW_KEY_W)
-	{
-		Vec3f dir = _camera.getForward();
-		_camera.move(dir);
-	}
-	if (key == GLFW_KEY_S)
-	{
-		Vec3f dir = _camera.getForward().negate();
-		_camera.move(dir);
-	}
-	if (key == GLFW_KEY_D)
-	{
-		Vec3f dir = _camera.getSide();
-		_camera.move(dir);
-	}
-	if (key == GLFW_KEY_A)
-	{
-		Vec3f dir = _camera.getSide().negate();
-		_camera.move(dir);
-	}
-	if (key == GLFW_KEY_SPACE)
-	{
-		Vec3f dir(0, 1, 0);
-		_camera.move(dir);
-	}
-	if (key == GLFW_KEY_LEFT_CONTROL)
-	{
-		Vec3f dir(0, -1, 0);
-		_camera.move(dir);
-	}
+	_camera.setKey(key, true);
 }
 
 void    SceneGame::keyRepeat(GLFWwindow *window, int key)
 {
-	if (key == GLFW_KEY_W)
-	{
-		Vec3f dir = _camera.getForward();
-		_camera.move(dir);
-	}
-	if (key == GLFW_KEY_S)
-	{
-		Vec3f dir = _camera.getForward().negate();
-		_camera.move(dir);
-	}
-	if (key == GLFW_KEY_D)
-	{
-		Vec3f dir = _camera.getSide();
-		_camera.move(dir);
-	}
-	if (key == GLFW_KEY_A)
-	{
-		Vec3f dir = _camera.getSide().negate();
-		_camera.move(dir);
-	}
-	if (key == GLFW_KEY_SPACE)
-	{
-		Vec3f dir(0, 1, 0);
-		_camera.move(dir);
-	}
-	if (key == GLFW_KEY_LEFT_CONTROL)
-	{
-		Vec3f dir(0, -1, 0);
-		_camera.move(dir);
-	}
+	_camera.setKey(key, true);
 }
 
 void    SceneGame::mouseButtonPress(GLFWwindow *window, int button)
